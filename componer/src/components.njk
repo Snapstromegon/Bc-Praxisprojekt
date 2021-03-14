@@ -1,0 +1,10 @@
+---
+layout: componer/main.njk
+eleventyNavigation:
+  key: Components
+---
+
+<h1>Components</h1>
+{% for component in collections.Component %}
+  <a href="{{ component.url }}">{{ component.data.title }}</a>
+{% endfor %}

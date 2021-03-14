@@ -1,0 +1,19 @@
+---
+layout: componer/main.njk
+eleventyComputed:
+  eleventyNavigation:
+    key: "{{ component }}"
+    parent: Components
+  title: "{{ component }}"
+tags:
+  - Component
+pagination:
+  data: components
+  alias: component
+  size: 1
+  addAllPagesToCollections: true
+permalink: "components/{{ component | slug }}/index.html"
+---
+
+<h1>{{ component }}</h1>
+{{ collections.all | eleventyNavigation(component) | eleventyNavigationToHtml | safe }}
