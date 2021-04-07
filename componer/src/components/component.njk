@@ -8,7 +8,7 @@ eleventyComputed:
 tags:
   - Component
 pagination:
-  data: components
+  data: components.11tydata.components
   alias: component
   size: 1
   addAllPagesToCollections: true
@@ -16,4 +16,13 @@ permalink: "components/{{ component | slug }}/index.html"
 ---
 
 <h1>{{ component }}</h1>
-{{ collections.all | eleventyNavigation(component) | eleventyNavigationToHtml | safe }}
+<ul class="component_variants">
+  {% for variant in
+  components["11tydata"].components[component].variants %}
+  <li>
+    <a href="{{ variant }}">
+      <img src="/assets/componer/img/variant-logo/{{ variant }}.avif" />
+    </a>
+  </li>
+  {% endfor %}
+</ul>

@@ -5,6 +5,25 @@ eleventyNavigation:
 ---
 
 <h1>Components</h1>
-{% for component in collections.Component %}
-  <a href="{{ component.url }}">{{ component.data.title }}</a>
-{% endfor %}
+<div class="card-grid">
+  {% for component in collections.Component %}
+  <div class="card component_preview">
+    <a href="{{ component.url }}">
+      <img src="/assets/component_previews/{{ component.data.title }}.jpg" />
+    </a>
+    <a href="{{ component.url }}"
+      ><h1>{{ component.data.title }}</h1></a
+    >
+    <ul class="component_variants">
+      {% for variant in
+      components["11tydata"].components[component.data.title].variants %}
+      <li>
+        <a href="{{ component.data.title }}/{{ variant }}">
+          <img src="/assets/componer/img/variant-logo/{{ variant }}.avif" />
+        </a>
+      </li>
+      {% endfor %}
+    </ul>
+  </div>
+  {% endfor %}
+</div>
