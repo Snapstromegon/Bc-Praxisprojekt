@@ -1,5 +1,0 @@
-framework: react
-eleventyComputed:
-  eleventyNavigation:
-    key: "{{ framework }}"
-    parent: "{{ component }}"

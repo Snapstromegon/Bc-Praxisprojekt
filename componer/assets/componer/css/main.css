@@ -15,7 +15,7 @@ body {
     "header header"
     "aside main"
     "aside footer";
-  min-height: 100vh;
+  height: 100vh;
   background: #fff;
 }
 
@@ -71,6 +71,7 @@ main {
   height: 100%;
   margin: auto;
   padding: 2rem 0;
+  overflow: auto;
 }
 
 main h1,
@@ -80,7 +81,9 @@ main h4,
 main h5,
 main h6,
 main p,
-main pre
+main pre,
+main ul,
+main button
  {
   margin: 1em 1rem 0.5em 1rem;
 }
@@ -110,6 +113,30 @@ main .component_preview {
   text-decoration: none;
   display:grid;
   grid-template-rows: 1fr auto auto auto;
+  grid-template-columns: 1fr auto;
+  grid-template-areas: "preview preview" "name difficulty" "description description" "variants variants";
+}
+
+main .component_preview a:first-child {
+  grid-area: preview;
+}
+
+main .component_preview p {
+  grid-area: description;
+}
+
+main .difficulty_rating {
+  grid-area: difficulty;
+  margin: 1rem;
+  color: #888;
+}
+
+main .difficulty__min {
+  color: #0a0;
+}
+
+main .difficulty__max {
+  color: #d00;
 }
 
 main .component_preview h1 {
@@ -121,10 +148,12 @@ main .component_preview img {
   width: 100%;
   height: 100%;
   min-height: 0;
-  object-fit: cover;
+  object-fit: contain;
+  object-position: top left;
 }
 
 main .component_variants{
+  grid-area: variants;
   list-style: none;
   margin: 1rem;
 }
@@ -139,8 +168,30 @@ main .component_variants li{
 }
 
 main .component_variants img {
-  width: 2rem;
   height: 2rem;
+  width: 2rem;
+  object-fit: cover;
+}
+
+main .component_preview a {
+  min-height: 0;
+}
+
+main hr {
+  margin: 1rem;
+}
+
+main .component_header {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  grid-template-rows: auto auto auto;
+  grid-template-areas: ". preview" "difficulty preview" "variants preview";
+}
+
+main .component_header>img {
+  grid-area: preview;
+  border: .1rem solid #000;
+  margin: 1rem;
 }
 
 footer {

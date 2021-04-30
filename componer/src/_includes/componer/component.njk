@@ -1,7 +1,36 @@
 ---
-title: Component
 layout: componer/main.njk
+eleventyComputed:
+  eleventyNavigation:
+    key: "{{ component.id }}"
+    parent: Components
+tags:
+  - Component
 ---
-<h1>{{ component }} / {{ framework }}</h1>
+<div class="component_header">
+  <img src="{{ component.preview_image}}" />
+  <h1>{{ component.name }}</h1>
+  <div class="difficulty_rating">
+    {% for i in range(5) %}
+    <span class="material-icons {{ "difficulty__max" if i >= 5 - component.difficulty.to and i < 5 - component.difficulty.from }} {{ "difficulty__min" if i >= 5 - component.difficulty.from}}">
+      star{{ "_outline" if i < 5 - component.difficulty.to}}
+    </span>
+    {% endfor %}
+  </div>
+  
+  <ul class="component_variants">
+    {% for variant in collections[component.id] %}
+    {% if variant.data.framework %}
+    <li>
+      <a href="{{ variant.data.framework }}">
+        <img src="/assets/componer/img/variant-logo/{{ variant.data.framework }}.avif" />
+      </a>
+    </li>
+    {% endif %}
+    {% endfor %}
+  </ul>
+</div>
+  
+<hr>
 
 {{ content | safe }}

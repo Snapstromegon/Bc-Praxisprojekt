@@ -1,5 +1,0 @@
-framework: vue
-eleventyComputed:
-  eleventyNavigation:
-    key: "{{ framework }}"
-    parent: "{{ component }}"

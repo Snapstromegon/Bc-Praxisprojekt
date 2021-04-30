@@ -20,13 +20,10 @@ Each component has a yaml file called like the folder to set some metadata for t
 
 Use the framework's yaml file to add some configuration for yaml and eleventy.
 Replace ```<framework>``` with the name of the framework in lower case.
+I know this might be annoying, but I didn't find another solution yet, that works well with the rest of the setup.
 
 ```yaml
 framework: <framework>
-eleventyComputed:
-  eleventyNavigation:
-    key: "{{ framework }}"
-    parent: "{{ component }}"
 ```
 
 And finally place your component implementation in the index.html in the framework folder.
@@ -38,7 +35,11 @@ src/
   components/
     <component>/
       <framework>/
+        [assets]/*
         <framework>.yaml
         index.html
       <component>.yaml
+      index.md
 ```
+
+If you want to understand how this works and to get started, start at the [Read Me](/components/01_readme) component.

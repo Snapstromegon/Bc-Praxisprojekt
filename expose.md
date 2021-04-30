@@ -25,3 +25,9 @@ Aus Problemstellung und Zielsetzung ergeben sich folgende Fragestellungen:
 - Ist es möglich Komponenten in anderen Frameworks zu nutzen?
 - Was ist "Developer Experience" in diesem Projekt? / Was sind wichtige Aspekte der "Developer Experience"?
 - Wie lassen sich die Frameworks / die Platform aus dem Aspekt der "Developer Experience" bewerten?
+
+
+## Notes
+
+- Zeitbereitschaft bei Implementierern
+- Schwierigkeitsabschätzung der Komponenten

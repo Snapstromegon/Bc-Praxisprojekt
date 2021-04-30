@@ -6,24 +6,31 @@ eleventyNavigation:
 
 <h1>Components</h1>
 <div class="card-grid">
-  {% for component in collections.Component %}
+  {% for component in components %}
   <div class="card component_preview">
-    <a href="{{ component.url }}">
-      <img src="/assets/component_previews/{{ component.data.title }}.jpg" />
+    <a href="./{{ component.id }}/">
+      <img src="{{ component.preview_image}}" />
     </a>
-    <a href="{{ component.url }}"
-      ><h1>{{ component.data.title }}</h1></a
-    >
+    <a href="./{{ component.id }}/"><h1>{{ component.name }}</h1></a>
+    <p>{{ component.description }}</p>
     <ul class="component_variants">
-      {% for variant in
-      components["11tydata"].components[component.data.title].variants %}
+      {% for variant in collections[component.id] %}
+        {% if variant.data.framework %}
       <li>
-        <a href="{{ component.data.title }}/{{ variant }}">
-          <img src="/assets/componer/img/variant-logo/{{ variant }}.avif" />
+        <a href="{{ component.id }}/{{ variant.data.framework }}">
+          <img src="/assets/componer/img/variant-logo/{{ variant.data.framework }}.avif" />
         </a>
       </li>
+        {% endif %}
       {% endfor %}
     </ul>
+    <div class="difficulty_rating">
+      {% for i in range(5) %}
+      <span class="material-icons {{ "difficulty__max" if i >= 5 - component.difficulty.to and i < 5 - component.difficulty.from }} {{ "difficulty__min" if i >= 5 - component.difficulty.from}}">
+        star{{ "_outline" if i < 5 - component.difficulty.to}}
+      </span>
+      {% endfor %}
+    </div>
   </div>
   {% endfor %}
 </div>

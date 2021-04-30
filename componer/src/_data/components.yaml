@@ -1,0 +1,16 @@
+- name: Read Me
+  id: 01_readme
+  difficulty: 
+    from: 1
+    to: 2
+  preview_image: /assets/component_previews/01_readme.png
+  description: |
+    This is a simple Hello World component
+
+- name: Test
+  id: 99_test
+  difficulty:
+    from: 2
+    to: 4
+  description: |
+    This is a test component to test the system
