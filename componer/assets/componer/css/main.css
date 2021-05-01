@@ -14,7 +14,7 @@ body {
   grid-template-areas:
     "header header"
     "aside main"
-    "aside footer";
+    "footer main";
   height: 100vh;
   background: #fff;
 }
@@ -37,6 +37,7 @@ aside {
   background: #fff;
   border-right: 0.1rem solid #ddd;
   padding: 2rem 0;
+  overflow: auto;
 }
 
 aside nav ul {
@@ -82,6 +83,7 @@ main h5,
 main h6,
 main p,
 main pre,
+main pre[class*="language-"],
 main ul,
 main button
  {
@@ -196,4 +198,7 @@ main .component_header>img {
 
 footer {
   grid-area: footer;
+  background: #fff;
+  border-right: 0.1rem solid #ddd;
+  padding: 1rem 2rem;
 }

@@ -1,5 +1,6 @@
 const yaml = require("js-yaml");
 const eleventyNavigationPlugin = require("@11ty/eleventy-navigation");
+const syntaxHighlight = require("@11ty/eleventy-plugin-syntaxhighlight");
 
 function customWhere(list, attribute, value) {
   return list.filter((elem) => elem[attribute] == value);
@@ -11,6 +12,7 @@ module.exports = (eleventyConfig) => {
     yaml.safeLoad(contents)
   );
   eleventyConfig.addPlugin(eleventyNavigationPlugin);
+  eleventyConfig.addPlugin(syntaxHighlight, { alwaysWrapLineHighlights: true });
 
   eleventyConfig.addFilter("customWhere", customWhere);
 

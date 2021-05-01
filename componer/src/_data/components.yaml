@@ -3,9 +3,34 @@
   difficulty: 
     from: 1
     to: 2
-  preview_image: /assets/component_previews/01_readme.png
+  preview_image: /assets/components/01_readme/preview.png
   description: |
     This is a simple Hello World component
+
+- name: Comment List
+  id: 02_comment-list
+  difficulty: 
+    from: 2
+    to: 4
+  preview_image: /assets/components/02_comment-list/preview.png
+  dependencies:
+    js:
+      - /assets/components/02_comment-list/js/main.js
+  description: |
+    This is a comments view which uses parallel loading of many comments.
+
+- name: Infinite Scroller
+  id: 03_infinite-scroller
+  difficulty: 
+    from: 3
+    to: 4
+  preview_image: /assets/components/03_infinite-scroller/preview.png
+  dependencies:
+    js:
+      - /assets/components/03_infinite-scroller/js/main.js
+  description: |
+    This is a comments view which uses lazy loading and infinite scrolling.
+    This is based on <a href="/components/02_comment-list/">Comment List</a>.
 
 - name: Test
   id: 99_test

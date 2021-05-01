@@ -2,8 +2,16 @@
 title: Component
 layout: componer/main.njk
 ---
+
+{% if component.dependencies.js %}
+  <script src="/assets/componer/js/main.js"></script>
+  {% for dep in component.dependencies.js %}
+    <script src="{{ dep }}" type="module"></script>
+  {% endfor %}
+{% endif %}
+
 <h1>{{ component.name }} / {{ framework }}</h1>
 
-<hr>
+<hr />
 
 {{ content | safe }}

@@ -1,4 +1,9 @@
+---
+eleventyNavigation:
+  order: 1
+---
+
 ## Short Description
-{{ component.description }}
+{{ component.description | safe }}
 
 ## Long Description

@@ -5,7 +5,7 @@ eleventyNavigation:
 
 ## Short Description
 
-{{ component.description }}
+{{ component.description | safe }}
 
 ## Long Description
 

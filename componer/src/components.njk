@@ -12,7 +12,7 @@ eleventyNavigation:
       <img src="{{ component.preview_image}}" />
     </a>
     <a href="./{{ component.id }}/"><h1>{{ component.name }}</h1></a>
-    <p>{{ component.description }}</p>
+    <p>{{ component.description | safe }}</p>
     <ul class="component_variants">
       {% for variant in collections[component.id] %}
         {% if variant.data.framework %}
