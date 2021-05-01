@@ -57,8 +57,6 @@ Those letters are quite small. Let's enlarge them!
 
 First add an *id* or *class* to your heading and add a style block changing the font-size for that heading to 5rem.
 
-A solution could look like the following:
-
 ##### In comes some magic!
 
 Componer is setup so you can create a folder called **assets** inside of a variation (next to **index.html**) and it get's copied over to the output folder relative to **index.html**.
