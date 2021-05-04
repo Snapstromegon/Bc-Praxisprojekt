@@ -1,4 +1,5 @@
 ---
+disabled: true
 eleventyNavigation:
   order: 1
 ---
@@ -7,3 +8,5 @@ eleventyNavigation:
 {{ component.description | safe }}
 
 ## Long Description
+
+This is an internal test component and can be ignored.

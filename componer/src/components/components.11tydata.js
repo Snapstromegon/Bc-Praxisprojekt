@@ -13,16 +13,16 @@ function getComponent(data) {
 module.exports = {
   eleventyComputed: {
     layout: (data) =>
-      data.framework
+      data.variation
         ? "componer/component_variant.njk"
         : "componer/component.njk",
     component: getComponent,
     eleventyNavigation: {
-      key: (data) => data.framework || getComponent(data).id,
-      parent: (data) => (data.framework ? getComponent(data).id : "Components"),
-      title: (data) => data.framework || getComponent(data).name
+      key: (data) => data.variation || getComponent(data).id,
+      parent: (data) => data.disabled ? "DISABLED" : (data.variation ? getComponent(data).id : "Components"),
+      title: (data) => data.variation || getComponent(data).name
     },
     title: (data) =>
-      getComponent(data).name + (data.framework ? " / " + data.framework : ""),
+      getComponent(data).name + (data.variation ? " / " + data.variation : ""),
   },
 };

@@ -11,19 +11,16 @@ tags:
   <img src="{{ component.preview_image}}" />
   <h1>{{ component.name }}</h1>
   <div class="difficulty_rating">
-    {% for i in range(5) %}
-    <span class="material-icons {{ "difficulty__max" if i >= 5 - component.difficulty.to and i < 5 - component.difficulty.from }} {{ "difficulty__min" if i >= 5 - component.difficulty.from}}">
-      star{{ "_outline" if i < 5 - component.difficulty.to}}
-    </span>
-    {% endfor %}
+    <span class="difficulty_range difficulty_range__{{component.difficulty.from}}">{{component.difficulty.from}}</span> -
+    <span class="difficulty_range difficulty_range__{{component.difficulty.to}}">{{component.difficulty.to}}</span>
   </div>
   
   <ul class="component_variants">
     {% for variant in collections[component.id] %}
-    {% if variant.data.framework %}
+    {% if variant.data.variation %}
     <li>
-      <a href="{{ variant.data.framework }}">
-        <img src="/assets/componer/img/variant-logo/{{ variant.data.framework }}.avif" />
+      <a href="{{ variant.data.variation }}">
+        <img src="/assets/componer/img/variant-logo/{{ variant.data.variation }}.avif" />
       </a>
     </li>
     {% endif %}
