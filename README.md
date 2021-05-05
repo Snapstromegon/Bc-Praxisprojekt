@@ -2,6 +2,8 @@
 
 Componer is a component development/testing framework developed in preperation to my bachelor thesis.
 
+This is also deployed via Netlify to [https://componer.hoeser.dev/](https://componer.hoeser.dev/).
+
 ## Getting Started
 
 - install [NodeJS](https://nodejs.org/en/) (the version should be LTS or Current - both are fine)
