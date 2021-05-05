@@ -1,5 +1,6 @@
 ---
 layout: componer/main.njk
+title: Glossary
 eleventyNavigation:
   key: Glossary
   order: -1

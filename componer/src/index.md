@@ -1,5 +1,6 @@
 ---
 layout: componer/main.njk
+title: Start
 eleventyNavigation:
   key: Start
   order: -2
@@ -34,6 +35,25 @@ To this step again for each component and variation you implement.
 
 Now you can start working on your first component (how to do this is described further down).
 
+### Implement more Variations or more components/stages
+
+Since I try to compare frameworks and their developer experience, to me it's more valuable if you take fewer components and implement them in as many variations as you can.
+
+If you're looking for variations to use, maybe start with these 4:
+
+- "vanilla": Vanilla JS (without webcomponents/custom elements)
+- "webcomponent": Vanilla JS using WebComponents / custom elements
+- "react": Using the React framework (client and/or statically rendered)
+- "vue": Using the Vue framework (client and/or statically rendered)
+
+I would appreciate if you'd do at least one vanilla implementation (vanilla or webcomponents) for each component you do.
+
+This project includes more components and stages than I expect you to complete, since I still value every minute you spend working for my project.
+
+If you'd ask me, I'd recommend to implement the Read Me component in every variation you want to use and then choose maybe two different components and implement them in those variations and do as many stages as you like.
+
+Also please take the questionaires seriously since they are at least as important as your code results.
+
 ### Sending results
 
 After you finished with your solutions (or even partial solutions) answer the questionaire **questionaires/03_when_youre_done.md**.
@@ -61,8 +81,6 @@ Basically it's an image of the component you'll build, the name, a short discrip
 The difficulty rating is done by levels one to five. One beeing the easiest and 5 beeing the hardest.
 
 Each rating contains two levels. The starting level of the first stage of the component and the end level, which is the last level of the component.
-
-This {{ component.name }} as you can see has a rating from one to two.
 
 It's totally fine to not implement all stages of a component. Also the difficulty is for the component concepts, not the possible framework implementations. So it might be that a component is easier or harder to implement in your variation of choice.
 

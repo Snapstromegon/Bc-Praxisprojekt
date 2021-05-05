@@ -19,7 +19,7 @@ This component requires some preperation from our side. Because of this we injec
 After the promise above resolved, you can use the following code to load the first 10 comments:
 
 ```js
-window.componer.component.fetchComments({offset: 0, amount: 10}).then(comments => /*...*/)
+window.componer.component.fetchComments({offset: 0, amount: 10}).then(commentsResponse => /*...*/)
 ```
 
 The offset is the starting point and the amount is restricted to max. 10 items at once.
