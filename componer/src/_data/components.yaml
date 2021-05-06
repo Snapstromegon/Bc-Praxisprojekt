@@ -32,6 +32,18 @@
     This is a comments view which uses lazy loading and infinite scrolling.
     This is based on <a href="/components/02_comment-list/">Comment List</a>.
 
+- name: Election Results
+  id: 04_election-results
+  difficulty: 
+    from: 1
+    to: 3
+  preview_image: /assets/components/04_election-results/preview.png
+  dependencies:
+    js:
+      - /assets/components/04_election-results/js/main.js
+  description: |
+    A component displaying election results.
+
 - name: Test
   id: 99_test
   difficulty:
