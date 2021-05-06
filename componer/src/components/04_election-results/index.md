@@ -41,9 +41,9 @@ Promise<{
 
 As a first step we want to display the results in a table like the following:
 
-| Party |  Votes |   % |
-| :---- | -----: | --: |
-| <span style="display: inline-block; width: 1em; height: 1em; background: hsl(0, 70%, 70%)"></span> ABC   | 654321 | 50.0% |
+| Party                                                                                                      |  Votes |     % |
+| :--------------------------------------------------------------------------------------------------------- | -----: | ----: |
+| <span style="display: inline-block; width: 1em; height: 1em; background: hsl(0, 70%, 70%)"></span> ABC     | 654321 | 50.0% |
 | <span style="display: inline-block; width: 1em; height: 1em; background: hsl(100, 70%, 70%)"></span> DEF   | 123456 | 10.0% |
 | <span style="display: inline-block; width: 1em; height: 1em; background: hsl(200, 70%, 70%)"></span> Other | 400000 | 40.0% |
 
