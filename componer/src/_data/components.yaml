@@ -44,6 +44,15 @@
   description: |
     A component displaying election results.
 
+- name: Metronome
+  id: 05_metronome
+  difficulty: 
+    from: 2
+    to: 4
+  preview_image: /assets/components/05_metronome/preview.png
+  description: |
+    A component acting as a metronome with the ability for various inputs.
+
 - name: Test
   id: 99_test
   difficulty:
