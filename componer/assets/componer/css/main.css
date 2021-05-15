@@ -138,7 +138,7 @@ main .component_preview img {
   height: 100%;
   min-height: 0;
   object-fit: contain;
-  object-position: top left;
+  object-position: top center;
 }
 
 main .component_variants {

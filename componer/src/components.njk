@@ -8,27 +8,29 @@ eleventyNavigation:
 <h1>Components</h1>
 <div class="card-grid">
   {% for component in components %}
-  <div class="card component_preview">
-    <a href="./{{ component.id }}/">
-      <img src="{{ component.preview_image}}" />
-    </a>
-    <a href="./{{ component.id }}/"><h1>{{ component.name }}</h1></a>
-    <p>{{ component.description | safe }}</p>
-    <ul class="component_variants">
-      {% for variant in collections[component.id] %}
-        {% if variant.data.variation %}
-      <li>
-        <a href="{{ component.id }}/{{ variant.data.variation }}">
-          <img src="/assets/componer/img/variant-logo/{{ variant.data.variation }}.avif" />
+    {% if component.id != "99_test" %}
+      <div class="card component_preview">
+        <a href="./{{ component.id }}/">
+          <img src="{{ component.preview_image}}" />
         </a>
-      </li>
-        {% endif %}
-      {% endfor %}
-    </ul>
-    <div class="difficulty_rating">
-      <span class="difficulty_range difficulty_range__{{component.difficulty.from}}">{{component.difficulty.from}}</span> -
-      <span class="difficulty_range difficulty_range__{{component.difficulty.to}}">{{component.difficulty.to}}</span>
-    </div>
-  </div>
+        <a href="./{{ component.id }}/"><h1>{{ component.name }}</h1></a>
+        <p>{{ component.description | safe }}</p>
+        <ul class="component_variants">
+          {% for variant in collections[component.id] %}
+            {% if variant.data.variation %}
+          <li>
+            <a href="{{ component.id }}/{{ variant.data.variation }}">
+              <img src="/assets/componer/img/variant-logo/{{ variant.data.variation }}.avif" />
+            </a>
+          </li>
+          {% endif %}
+          {% endfor %}
+        </ul>
+        <div class="difficulty_rating">
+          <span class="difficulty_range difficulty_range__{{component.difficulty.from}}">{{component.difficulty.from}}</span> -
+          <span class="difficulty_range difficulty_range__{{component.difficulty.to}}">{{component.difficulty.to}}</span>
+        </div>
+      </div>
+    {% endif %}
   {% endfor %}
 </div>
