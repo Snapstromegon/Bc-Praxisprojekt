@@ -17,45 +17,63 @@ The last question of each questionaire will be how much time it took you to work
 
 ## Questions
 
-### 1. On a scale from 1 (beginner) to 10 (long term professional), how would you rate your general programming expertise (including outside of web development)?
+### General Information
+
+Please fill the following statements using either a "X" or a comma seperated list (if the statement starts with "#") like this:
+
+| EXAMPLE                |               |                           |                          |                  |                                 |
+| :--------------------- | ------------- | ------------------------- | ------------------------ | ---------------- | ------------------------------- |
+| Cat petting experience | () alergic    | () they don't run from me | () they keep coming back | (X) cat owner    | () I'm the one and only         |
+| # Cats I pet           | (Kevin) never | () sometimes              | (Fine) everytime I visit | () long sessions | (Julia, Kiki) we're inseparable |
+
+| Statement                  |                |                           |                                            |                                     |                           |
+| :------------------------- | -------------- | ------------------------- | ------------------------------------------ | ----------------------------------- | ------------------------- |
+| My programming expertise   | () beginner    | () can do the basics      | () understand unknown code from reading it | () contributed to larger projects   | () Long term professional |
+| Frontend WebDev experience | () beginner    | () good HTML JS CSS       | () launched first project                  | () used bundlers/built tools before | () Spec author level      |
+| # Programming languages    | () hello world | () compiles on my machine | () I use my software regularly             | () others use my software regularly | () Long term professional |
+| # Frontend Frameworks      | () hello world | () played locally         | () used in personal project                | () used in bigger project           | () contributer level      |
+
+### How old are you?
+
+~ your age here ~
+
+### What's your gender?
 
 ~ your answer here ~
 
-### 2. On a scale from 1 (beginner) to 10 (long term professional), how would you rate your frontend web development expierience?
+### How many years of experience do you have in (leave empty if not applicable):
+
+- programming: ~
+- professional programming: ~
+- web development: ~
+- professional web development: ~
+- design (UI / UX / Visual): ~
+
+### What is your current position:
+
+~ your current job description ~
+
+### What is your highest level of education (either titel, current degree course or apprenticeship)?
 
 ~ your answer here ~
 
-### 3. What is your highest level of education (either titel, current degree course or apprenticeship)?
+### How much time are you planning on or willing to spend contributing to this project in hours (including answering questionaires and coding)?
 
 ~ your answer here ~
 
-### 4. Which are your top programming languages and how would you rate yourself in them from 1 (beginner) to 10 (long term professional)?
+### Where did you hear from this project?
 
 ~ your answer here ~
 
-### 5. Which frontend frameworks have you worked with in the past and how would you rate yourself in them from 1 (hello world) to 10 (framework author)?
-
-- framework_1: 8
-- framework_2: 5
-- framework_3: 2
-
-### 6. How much time are you planning on or willing to spend contributing to this project in hours (including answering questionaires and coding)?
+### What is your preferred editor or IDE?
 
 ~ your answer here ~
 
-### 7. Where did you hear from this project?
+### What are aspects you're looking for in modern frameworks and related tooling in regards to developer experience (e.g. out of the box experience, TS support, ...)?
 
 ~ your answer here ~
 
-### 8. What is your preferred editor or IDE?
-
-~ your answer here ~
-
-### 9. What are aspects you're looking for in modern frameworks and related tooling in regards to developer experience (e.g. out of the box experience, TS support, ...)?
-
-~ your answer here ~
-
-### 10. Do you have experience working with [NodeJS](https://nodejs.org/en/) and/or [11ty](https://www.11ty.dev/) and if yes, what is that experience?
+### Do you have experience working with [NodeJS](https://nodejs.org/en/) and/or [11ty](https://www.11ty.dev/) and if yes, what is that experience?
 
 ~ your answer here ~
 
