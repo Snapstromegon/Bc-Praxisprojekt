@@ -26,6 +26,9 @@ Please fill the following statements using either a "X" or a comma seperated lis
 | Cat petting experience | () alergic    | () they don't run from me | () they keep coming back | (X) cat owner    | () I'm the one and only         |
 | # Cats I pet           | (Kevin) never | () sometimes              | (Fine) everytime I visit | () long sessions | (Julia, Kiki) we're inseparable |
 
+Always use the option from column 2-6 which matches you the best in context of the statement in column one.
+(For readability I suggest disabling auto line breaks if you have it enabled)
+
 | Statement                  |                |                           |                                            |                                     |                           |
 | :------------------------- | -------------- | ------------------------- | ------------------------------------------ | ----------------------------------- | ------------------------- |
 | My programming expertise   | () beginner    | () can do the basics      | () understand unknown code from reading it | () contributed to larger projects   | () Long term professional |
