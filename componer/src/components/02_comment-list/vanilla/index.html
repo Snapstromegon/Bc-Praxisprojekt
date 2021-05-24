@@ -1,0 +1,220 @@
+{% raw %}
+<button id="button_sort">Sort by votes</button>
+<div id="comments"></div>
+
+<script type="module">
+    await window.componer.ready;
+
+    // let div = document.getElementById("comments");
+
+    //LEFT THIS TO SHOW WHAT I DID IN STEP 2
+    //Function to load and show num_to_load first comments and return the number of all comments
+    // async function loadFirstComments(num_to_load) {
+    //     let commentsResponse = await window.componer.component.fetchComments({ offset: 0, amount: num_to_load });
+
+    //     for (let comment of commentsResponse.comments) {
+    //         showComment(comment);
+    //     }
+
+    //     return commentsResponse.total;
+    // }
+
+    // //Function to load and show all comments
+    // async function loadAllComments() {
+    //     let remaining_comments_num = await loadFirstComments(10) - 10;
+
+    //     let remaining_comments = await window.componer.component.fetchComments({ offset: 10, amount: remaining_comments_num });
+    //     for (let comment of remaining_comments.comments) {
+    //         showComment(comment);
+    //     }
+    // }
+
+    //WHAT I DID IN 3
+    // //Show and load num comments, starting from off offset
+    // async function loadComments(off, num) {
+    //     let commentsResponse = await window.componer.component.fetchComments({ offset: off, amount: num });
+
+    //     for (let comment of commentsResponse.comments) {
+    //         showComment(comment);
+    //     }
+
+    //     return commentsResponse.total;
+    // }
+
+    // async function loadAllComments() {
+    //     let comments_total_count = await loadComments(0, 10);
+    //     let comments_loaded_count = 10;
+
+    //     while (comments_loaded_count < comments_total_count) {
+    //         await loadComments(comments_loaded_count, 10);
+    //         comments_loaded_count += 10;
+    //     }
+    // }
+
+    //WHAT I DID IN 4
+    // let parent_div = document.getElementById("comments");
+
+    // //I shortly thought I'd have to worry about threading, but I guess I don't have to, soo
+    // let loaded_segments = []; //First way I could think of to share this data between the functions
+
+    // //Load a segment and display it
+    // async function loadSegment(off, num) {
+    //     let commentsResponse = await window.componer.component.fetchComments({ offset: off, amount: num });
+
+    //     //Find position for comment insertion
+    //     let div_id = loaded_segments.find(element => element > off);
+
+    //     //Create a new div to add to the view
+    //     let new_div = document.createElement("div");
+    //     new_div.id = "div_" + off;
+
+    //     //Add comment to div
+    //     for (let comment of commentsResponse.comments) {
+    //         showComment(comment, new_div);
+    //     }
+
+    //     //Füge das div an der richtigen Stelle ein
+    //     if (div_id !== undefined) {
+    //         document.body.insertBefore(new_div, document.getElementById("div_" + div_id));
+    //     }
+    //     else {
+    //         parent_div.appendChild(new_div);
+    //     }
+    //
+    // IM NACHHINEIN HINZUGEFÜGT, UNGETESTET
+    // let next_index = loaded_segments.findIndex(element => element > off);
+    // if (next_index === -1)
+    // {
+    //     loaded_segments.push(off);
+    // }
+    // else
+    // {
+    //     loaded_segments.splice(next_index, 0, off);
+    // }
+    //}
+    // //Load all comments
+    // async function loadAllComments() {
+    //     let comment_num = (await window.componer.component.fetchComments({ offset: 0, amount: 0 })).total;
+
+    //     for (let i = 0; i < comment_num; i += 10) {
+    //         loadSegment(i, 10);
+    //     }
+    // }
+
+    // //Function to show a single comment in the UI
+    // function showComment(comment, div) {
+    //     div.innerHTML += comment.username;
+    //     div.innerHTML += "<br>";
+    //     div.innerHTML += comment.comment;
+    //     div.innerHTML += "<br><br>";
+    // }
+
+    //WHAT I DID IN 5
+
+    let parent_div = document.getElementById("comments");
+    let button_sort = document.getElementById("button_sort");
+
+    //I shortly thought I'd have to worry about threading, but I guess I don't have to, soo
+    let loaded_segments = []; //First way I could think of to share this data between the functions
+    let load_order = new Map();
+    let vote_order = new Map();
+    let sort_by_votes = false;
+
+    //Button callback for sorting
+    button_sort.addEventListener("click", function (e) {
+        e.preventDefault();
+
+        sort_by_votes = !sort_by_votes;
+
+        //Get all currently displayed comments
+        let all_comments = [...parent_div.children];
+
+        //Remove current order
+        all_comments.forEach(comment => comment.remove());
+
+        if (sort_by_votes) {
+            //Sortiert nach votes, absteigend
+            all_comments.sort((a, b) => {
+                return vote_order.get(b.id) - vote_order.get(a.id);
+            });
+
+            button_sort.textContent = "Sort by time";
+        }
+        else {
+            //Sortiere nach order, aufsteigend
+            all_comments.sort((a, b) => {
+                return load_order.get(a.id) - load_order.get(b.id);
+            });
+
+            button_sort.textContent = "Sort by votes";
+        }
+
+        all_comments.forEach(comment => parent_div.appendChild(comment));
+    });
+
+    //Load a segment and display it
+    async function loadSegment(off, num) {
+        let commentsResponse = await window.componer.component.fetchComments({ offset: off, amount: num });
+
+        //Find position for comment insertion
+        let div_id = loaded_segments.find(element => element > off);
+
+        //Add to loaded_segments to insert the next comments for the next loadSegment call at the right position
+        loaded_segments = insert_sorted(loaded_segments, off, element => element > off);
+
+        //Add comment to div
+        for (let [index, comment] of commentsResponse.comments.entries()) {
+            //Create a new div to add to the view
+            let new_div = document.createElement("div");
+            new_div.id = "div_" + (off + index);
+
+            //Insert comment text in div
+            new_div.innerHTML += comment.username + "<br>";
+            new_div.innerHTML += comment.comment + "<br>";
+            new_div.innerHTML += comment.votes + "<br>";
+
+            //Add comment as div
+            document.body.insertBefore(new_div, document.getElementById("div_" + div_id));
+
+            //Remember load and vote order
+            load_order.set("div_" + (off + index), off + index);
+            vote_order.set("div_" + (off + index), comment.votes);
+
+            //Füge das div an der richtigen Stelle ein
+            if (div_id !== undefined) {
+                document.body.insertBefore(new_div, document.getElementById("div_" + div_id));
+            }
+            else {
+                parent_div.appendChild(new_div);
+            }
+        }
+    }
+
+    function insert_sorted(array, element, find_index_func) {
+        let next_index = array.findIndex(find_index_func);
+        if (next_index === -1) {
+            array.push(element);
+        }
+        else {
+            array.splice(next_index, 0, element);
+        }
+
+        return array;
+    }
+
+    //Load all comments
+    async function loadAllComments() {
+        let comment_num = (await window.componer.component.fetchComments({ offset: 0, amount: 0 })).total;
+
+        for (let i = 0; i < comment_num; i += 10) {
+            loadSegment(i, 10);
+        }
+    }
+
+    //Now that all functions are defined: load all comments
+    loadAllComments()
+        .catch(e => {
+            console.log("An error occured while loading comments: " + e.message);
+        });
+</script>
+{% endraw %}
