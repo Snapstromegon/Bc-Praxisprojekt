@@ -1,0 +1,13 @@
+.blinker{
+    
+    visibility: hidden;
+    display:inline-block;
+    background-color: blue;
+    width: 2rem;
+    height: 2rem;
+    border-radius: 50%;
+    
+}
+#blinker0{
+    background-color: red; 
+}

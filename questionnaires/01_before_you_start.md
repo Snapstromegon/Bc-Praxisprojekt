@@ -31,46 +31,46 @@ Always use the option from column 2-6 which matches you the best in context of t
 
 | Statement                  |                |                           |                                            |                                     |                           |
 | :------------------------- | -------------- | ------------------------- | ------------------------------------------ | ----------------------------------- | ------------------------- |
-| My programming expertise   | () beginner    | () can do the basics      | () understand unknown code from reading it | () contributed to larger projects   | () Long term professional |
-| Frontend WebDev experience | () beginner    | () good HTML JS CSS       | () launched first project                  | () used bundlers/built tools before | () Spec author level      |
-| # Programming languages    | () hello world | () compiles on my machine | () I use my software regularly             | () others use my software regularly | () Long term professional |
-| # Frontend Frameworks      | () hello world | () played locally         | () used in personal project                | () used in bigger project           | () contributer level      |
+| My programming expertise   | () beginner    | () can do the basics      | () understand unknown code from reading it | (X) contributed to larger projects   | () Long term professional |
+| Frontend WebDev experience | () beginner    | () good HTML JS CSS       | (X) launched first project                  | () used bundlers/built tools before | () Spec author level      |
+| # Programming languages    | (C,C++,R) hello world | (java, Python) compiles on my machine | (javaScript) I use my software regularly             | (php) others use my software regularly | () Long term professional |
+| # Frontend Frameworks      | () hello world | () played locally         | (Vue) used in personal project                | (symfony) used in bigger project           | () contributer level      |
 
 ### How old are you?
 
-~ your age here ~
+~ your age here 22
 
 ### What's your gender?
 
-~ your answer here ~
+~ your answer here f
 
 ### How many years of experience do you have in (leave empty if not applicable):
 
-- programming: ~
-- professional programming: ~
-- web development: ~
-- professional web development: ~
+- programming: 8
+- professional programming: 2
+- web development: 3
+- professional web development: 2
 - design (UI / UX / Visual): ~
 
 ### What is your current position:
 
-~ your current job description ~
+~ your current job description student assitant it-support
 
 ### What is your highest level of education (either titel, current degree course or apprenticeship)?
 
-~ your answer here ~
+~ your answer here abitur - currently student in bachelor degree program computer science
 
 ### How much time are you planning on or willing to spend contributing to this project in hours (including answering questionaires and coding)?
 
-~ your answer here ~
+~ your answer here 10h
 
 ### Where did you hear from this project?
 
-~ your answer here ~
+~ your answer here directly messaged
 
 ### What is your preferred editor or IDE?
 
-~ your answer here ~
+~ your answer here VSCode
 
 ### What are aspects you're looking for in modern frameworks and related tooling in regards to developer experience (e.g. out of the box experience, TS support, ...)?
 
@@ -78,10 +78,11 @@ Always use the option from column 2-6 which matches you the best in context of t
 
 ### Do you have experience working with [NodeJS](https://nodejs.org/en/) and/or [11ty](https://www.11ty.dev/) and if yes, what is that experience?
 
-~ your answer here ~
+~ your answer here flexible use of components
 
 ### Is there anything you'd like to tell me that I didn't ask for?
 
 ~ your freestyle comment here ~
 
-### Filling this questionaire took me this long:
+### Filling this questionaire took me this long: 
+15min

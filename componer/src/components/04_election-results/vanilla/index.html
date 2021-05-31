@@ -1,0 +1,99 @@
+{% raw %}
+<link rel="stylesheet" href="./assets/style.css">
+<h1> Election Results</h1>
+
+<table>
+    <thead>
+        <tr id="resultGraph">
+        </tr>
+    </thead>
+</table>
+
+<table id="resultTable">
+    <thead id= "resultTableHead">
+        <tr id= "resultTableHeader"> 
+            <td class="tableHeader">Party</td>
+            <td class="tableHeader">Votes</td>
+            <td class="tableHeader">%</td>
+        </tr>
+    </thead>
+    <tbody id= "resultTableBody">
+        <tr></tr>
+        <tr></tr>
+    </tbody>
+</table>
+
+
+
+
+<script>
+    var results = [];
+    var total= 0;
+    loadResults();
+    
+    
+
+    function generateTable(){
+        var table = document.getElementById("resultTableBody");
+        console.log(table);
+        table.innerHTML = "";
+        var other= 0;
+        for (let index = 0; index < results.length; index++) {
+            var result = results[index];
+            var percent = (result[1].votes / total)*100;
+            if (percent >= 5){
+                table.appendChild(document.createElement("TR"));
+                var line = table.lastChild;
+                line.appendChild(document.createElement("TD"));
+                line.lastChild.innerHTML="<span style='display: inline-block; width: 1em; height: 1em; background:" +result[1].color+"'></span>"+result[0];
+                line.appendChild(document.createElement("TD"));
+                line.lastChild.innerHTML=result[1].votes;
+                line.appendChild(document.createElement("TD"));
+                line.lastChild.innerHTML=percent.toFixed(1);
+            }else{
+                other=other+result[1].votes;
+            }
+        }
+            var otherPercent = (other / total)*100;
+                table.appendChild(document.createElement("TR"));
+                var line = table.lastChild;
+                line.appendChild(document.createElement("TD"));
+                line.lastChild.innerHTML="<span style='display: inline-block; width: 1em; height: 1em; background: hsl(200, 70%, 70%)'></span>Other";
+                line.appendChild(document.createElement("TD"));
+                line.lastChild.innerHTML=other;
+                line.appendChild(document.createElement("TD"));
+                line.lastChild.innerHTML=otherPercent.toFixed(1);
+    }
+    function generateGraph(){
+        var graph = document.getElementById("resultGraph");
+        graph.innerHTML = "";
+        var other= 0;
+        for (let index = 0; index < results.length; index++) {
+            var result = results[index]; 
+            var percent = (result[1].votes / total)*100;
+            if (percent >= 5){
+                graph.innerHTML=graph.innerHTML+"<td class ='graphTD' style='display: inline-block; width: "+percent.toFixed(1)+"%;  background:" +result[1].color+"'>"+result[0]+"</td>";
+            }else{
+                other=other+result[1].votes;
+            }
+        }
+        if(other>0){
+            var otherPercent = (other / total)*100;
+            graph.innerHTML=graph.innerHTML+"<td class ='graphTD' style='display: inline-block; width: "+otherPercent.toFixed(1)+"%;  background:hsl(200, 70%, 70%)'>Other</td>";
+        }
+        }
+
+    async function loadResults(){
+    await window.componer.ready;
+    setInterval(()=>{
+        window.componer.component.fetchLiveResults().then(result =>{
+        results= Object.keys(result.results).map((key) => [key,result.results[key]]); 
+        total= Number(result.total); 
+        generateTable();
+        generateGraph();
+        } );}
+    ,1000);
+    }
+</script>
+
+{% endraw %}
