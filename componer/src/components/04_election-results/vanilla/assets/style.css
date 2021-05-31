@@ -1,0 +1,32 @@
+#resultTableHead{
+    width: 100%;
+    font-style: bold;
+}
+#resultTableHeader{
+    width: 100%;
+    font-style: bold;
+    border-top: none;
+}
+#resultTableBody{
+    width: 100%;
+}
+.tableHeader{
+    font-style: bold;
+}
+tr{
+    width: 100%;
+}
+td{
+    width: 33%;
+}
+thead{
+    width: 100%;
+}
+#resultGraph{
+    width: 100%;
+}
+.graphTD{
+    display:block;
+    border-collapse:separate;
+    box-sizing: content-box;
+}

@@ -1,0 +1,141 @@
+{% raw %}
+<link rel="stylesheet" href="./assets/style.css">
+<input id="inputbpm" type="number" value="120" onchange="setBPM(this.value)" >
+<input id="inputbpmrange" type="range" min="40" max="240" value="120" onchange="setBPM(this.value)" />
+
+<button id ="tapper" onClick="computeTaps()">TAP BPM</button>
+<a id=tapbpm>120</a> <a>Tap BPM</a>
+<a id="tappertimer">5.00</a> <a>sec</a>
+<br/>
+<button id ="sound" onClick="toggleSound()">Sound: ON</button>
+<br/>
+<input id="inputnr" type="number" value="4" onchange="setNr(this.value)" >/<input id="inputnr" type="number" value="4" onchange="setLength(this.value)" >
+<br/>
+<li id = "blinkers"> <button class = blinker id= "blinker0" value="true"></button> <button class = blinker id= "blinker1" value="false"></button> <button class = blinker id= "blinker2" value="false"></button><button class = blinker id= "blinker3" value="false"></button> </li>
+
+
+<script>
+var bpm = 120;
+var delay = ((60000/bpm)/(barNr/barLength));
+var time = 5.00
+var run =true;
+var taps = [];
+var tapbpm =120;
+var timerInterval ;
+var barLength = 4;
+var barNr= 4;
+var currentBar= 3;
+var sound = true;
+
+
+var interval = setInterval(()=>changeBlinker(),delay);
+setBPM(bpm);
+
+function startTimer(){
+    time = 5.00;
+    document.getElementById("tappertimer").innerHTML = time;
+    clearInterval(timerInterval);
+    timerInterval =setInterval(()=>{
+        time = time - 0.01; 
+        document.getElementById("tappertimer").innerHTML = time.toFixed(2);    
+        if (time <= 0.01){
+            clearInterval(timerInterval);
+            taps = [];
+            setBPM(tapbpm)
+    }},10);
+
+
+}
+
+function setNr (nr){
+    if (nr <= barLength){
+        barNr = nr;
+        setBPM(bpm);
+    }
+}
+function toggleSound (nr){
+    if (sound){
+        sound = false;
+        document.getElementById("sound").innerHTML ="Sound: OFF";
+    }else{
+        sound = true;
+        document.getElementById("sound").innerHTML ="Sound: ON";
+    }
+}
+
+
+function setLength (length){
+    var blinkers = document.getElementById("blinkers");
+    blinkers.innerHTML = "<button class = blinker id= 'blinker0' value='true'>";
+        for (let index = 1; index < length; index++) {
+            blinkers.innerHTML = blinkers.innerHTML+"<button class = blinker id= 'blinker"+index+"' value='false'>"; 
+        }
+    barLength = length;
+    setBPM(bpm);
+}
+
+function computeTaps(){
+    startTimer();
+    var current= new Date().getTime();
+    var last = taps[taps.length-1];
+    console.log(current-last);
+    taps.push(current);
+    var acc = 0;
+    for (let index = 0; index < taps.length; index++) {
+        acc = acc + (current-last);    
+        console.log(acc);
+    }
+    var avg = acc/taps.length;
+    console.log(avg);
+    tapbpm = (60000/avg).toFixed(0);
+    console.log(tapbpm);
+    document.getElementById("tapbpm").innerHTML = tapbpm;
+}
+
+function setBPM(bpm){
+    document.getElementById("inputbpm").value = bpm
+    document.getElementById("inputbpmrange").value = bpm;
+    delay =  ((60000/bpm)/(barNr/barLength));
+    clearInterval(interval);
+    interval = setInterval(()=>changeBlinker(),delay);
+}
+function changeBlinker(){
+for (let index = 0; index < barLength; index++) {
+    var blinker = document.getElementById("blinker"+index);
+    if(blinker.value=="true"){
+        blinker.style.visibility = "hidden";
+        blinker.value = false;
+    }else if (index ==currentBar){
+        blinker.style.visibility = "visible";
+        blinker.value = true;
+        if (sound){
+            if (currentBar==0){
+                play_sound(493);
+            }else{
+                play_sound(440);
+            }
+        }
+    }
+        
+}
+if(currentBar == (barNr-1)){
+    currentBar = 0;
+}else{
+    currentBar ++;
+}
+}
+function play_sound(frequency = 440){
+  const context = new AudioContext()
+  const gain = context.createGain()
+  const oscillator = context.createOscillator()
+  gain.connect(context.destination)
+  oscillator.connect(gain)
+  oscillator.frequency.value = frequency;
+  oscillator.start(0);
+  gain.gain.exponentialRampToValueAtTime(
+    0.000001, context.currentTime + .5
+  )
+  setTimeout(() => context.close(), 1000)
+}
+</script>
+{% endraw %}

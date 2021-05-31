@@ -1,0 +1,189 @@
+{% raw %}
+<html>
+<div id="main">
+</div>
+    <link rel="stylesheet" href="./assets/style.css">
+    <script src="https://unpkg.com/react@16/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6.26.0/babel.js"></script>
+    
+    <script type="text/babel">
+    /*
+
+        function startTimer(){
+            time = 5.00;
+            document.getElementById("tappertimer").innerHTML = time;
+            clearInterval(timerInterval);
+            timerInterval =setInterval(()=>{
+                time = time - 0.01; 
+                document.getElementById("tappertimer").innerHTML = time.toFixed(2);    
+                if (time <= 0.01){
+                    clearInterval(timerInterval);
+                    taps = [];
+                    setBPM(tapbpm)
+            }},10);
+        }
+
+        function setNr (nr){
+            if (nr <= barLength){
+                barNr = nr;
+                setBPM(bpm);
+            }
+        }
+        function toggleSound (nr){
+            if (sound){
+                sound = false;
+                document.getElementById("sound").innerHTML ="Sound: OFF";
+            }else{
+                sound = true;
+                document.getElementById("sound").innerHTML ="Sound: ON";
+            }
+        }
+
+
+
+
+
+
+
+    */
+    class Metronome extends React.Component{
+        constructor(){
+        super();
+        this.bpm = 120;
+        this.time = 5.00;
+        this.run =true;
+        this.taps = [];
+        this.tapbpm =120;
+        this.timerInterval ;
+        this.barLength = 4;
+        this.barNr= 4;
+        this.currentBar= 3;
+        this.sound = true;
+        this.delay = ((60000/this.bpm)/(this.barNr/this.barLength));
+        this.interval = setInterval(()=>this.renderBlinkers(),this.delay);
+        this.blinkers = [];
+        this.setLength(this.barLength)
+        }    
+        setBPM(value){         
+            this.bpm = value;
+            this.forceUpdate()
+            this.delay =  ((60000/this.bpm)/(this.barNr/this.barLength));
+            clearInterval(this.interval);
+            this.interval = setInterval(()=>this.renderBlinkers(),this.delay);
+
+        }
+        computeTaps(){
+            this.startTimer();
+            var current= new Date().getTime();
+            var last = this.taps[this.taps.length-1];
+            console.log(current-last);
+            this.taps.push(current);
+            var acc = 0;
+            for (let index = 0; index < this.taps.length; index++) {
+                acc = acc + (current-last);    
+                console.log(acc);
+            }
+            var avg = acc/this.taps.length;
+            console.log(avg);
+            this.tapbpm = (60000/avg).toFixed(0);
+            console.log(tapbpm);
+            document.getElementById("tapbpm").innerHTML = this.tapbpm;
+        }
+        
+        startTimer(){
+            this.time = 5.00;
+            document.getElementById("tappertimer").innerHTML = this.time;
+            clearInterval(this.timerInterval);
+            this.timerInterval =setInterval(()=>{
+                this.time = this.time - 0.01; 
+                document.getElementById("tappertimer").innerHTML = this.time.toFixed(2);    
+                if (this.time <= 0.01){
+                    clearInterval(this.timerInterval);
+                    this.taps = [];
+                    this.setBPM(this.tapbpm)
+            }},10);
+        }
+        setLength (length){
+            this.barLength = length;
+            this.blinkers = [<button className = "blinker" id="blinker0"> </button>];
+            for (let index = 1; index < this.barLength; index++) {
+                var id = "blinker"+index;
+                this.blinkers.push(<button className = "blinker" id={id}> </button>);
+            }
+            this.setBPM(this.bpm);
+        }
+        setNr (nr){
+            if (nr <= this.barLength){
+                this.barNr = nr;
+                this.setBPM(this.bpm);
+            }
+        }
+        renderBlinkers(){
+            if(this.currentBar == (this.barNr-1)){
+                this.currentBar = 0;
+            }else{
+                this.currentBar ++;
+            }
+            for (let index = 0; index < this.barLength; index++) {
+                if (index ==this.currentBar){
+                document.getElementById("blinker"+index).style.visibility = "visible";
+                    if (this.sound){
+                        if (this.currentBar==0){
+                            this.play_sound(493);
+                        }else{
+                            this.play_sound(440);
+                        }
+                    }
+                }else{
+                document.getElementById("blinker"+index).style.visibility = "hidden";
+                }
+            }
+            return blinkers;
+            
+        }
+        play_sound(frequency = 440){
+            const context = new AudioContext()
+            const gain = context.createGain()
+            const oscillator = context.createOscillator()
+            gain.connect(context.destination)
+            oscillator.connect(gain)
+            oscillator.frequency.value = frequency;
+            oscillator.start(0);
+            gain.gain.exponentialRampToValueAtTime(
+                0.000001, context.currentTime + .5
+            )
+            setTimeout(() => context.close(), 1000)
+        }
+        toggleSound (){
+            if (this.sound){
+                this.sound = false;
+                document.getElementById("sound").innerHTML ="Sound: OFF";
+            }else{
+                this.sound = true;
+                document.getElementById("sound").innerHTML ="Sound: ON";
+            }
+        }
+        render(){
+            return(
+                <div>
+                    <input id="inputbpm" type="number" value={this.bpm} onChange={()=>{this.value= event.target.value;  this.setBPM(event.target.value)}} />
+                    <input id="inputbpmrange" type="range" min="40" max="240" value= {this.bpm} onChange={()=>{this.bpm= event.target.value; this.setBPM(event.target.value)}}/>
+                    <button id ="tapper" onClick={()=>this.computeTaps()}>TAP BPM</button>
+                    <a id="tapbpm">120</a> <a>Tap BPM</a>
+                    <a id="tappertimer">5.00</a> <a>sec</a>
+                    <br/>
+                    <button id ="sound" onClick={()=>this.toggleSound()}>Sound: ON</button>
+                    <br/>
+                    <input id="inputnr" type="number" value={this.barNr} onChange={()=>this.setNr(event.target.value)} />/<input id="inputlength" type="number" value={this.barLength} onChange={()=>this.setLength(event.target.value)} />
+                    <br/>
+                    <li id = "blinkers"> {this.blinkers} </li>
+                </div>
+            );
+        }
+    }    
+    ReactDOM.render(<Metronome/>, document.getElementById('main'))
+    </script>
+</html>
+
+{% endraw %}
