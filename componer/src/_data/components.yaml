@@ -35,8 +35,8 @@
 - name: Election Results
   id: 04_election-results
   difficulty: 
-    from: 1
-    to: 3
+    from: 2
+    to: 4
   preview_image: /assets/components/04_election-results/preview.png
   dependencies:
     js:
@@ -47,8 +47,8 @@
 - name: Metronome
   id: 05_metronome
   difficulty: 
-    from: 2
-    to: 4
+    from: 1
+    to: 3
   preview_image: /assets/components/05_metronome/preview.png
   description: |
     A component acting as a metronome with the ability for various inputs.
