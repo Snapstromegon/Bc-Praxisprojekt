@@ -33,8 +33,8 @@ Always use the option from column 2-6 which matches you the best in context of t
 | :------------------------- | -------------- | ------------------------- | ------------------------------------------ | ----------------------------------- | ------------------------- |
 | My programming expertise   | () beginner    | () can do the basics      | () understand unknown code from reading it | () contributed to larger projects   | () Long term professional |
 | Frontend WebDev experience | () beginner    | () good HTML JS CSS       | () launched first project                  | () used bundlers/built tools before | () Spec author level      |
-| # Programming languages    | () hello world | () compiles on my machine | () I use my software regularly             | () others use my software regularly | () Long term professional |
-| # Frontend Frameworks      | () hello world | () played locally         | () used in personal project                | () used in bigger project           | () contributer level      |
+| # Programming languages (name languages)   | () hello world | () compiles on my machine | () I use my software regularly             | () others use my software regularly | () Long term professional |
+| # Frontend Frameworks (name frameworks)     | () hello world | () played locally         | () used in personal project                | () used in bigger project           | () contributer level      |
 
 ### How old are you?
 
