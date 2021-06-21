@@ -63,6 +63,10 @@ aside nav ul ul ul {
   font-size: 1rem;
 }
 
+aside nav li {
+  border: 0.1rem solid transparent;
+}
+
 aside nav li.active {
   box-sizing: border-box;
   border: .1rem solid hsl(39deg, 100%, 67%);
