@@ -1,5 +1,9 @@
 <aside>
   <nav>
-    {{ collections.all | eleventyNavigation | eleventyNavigationToHtml | safe }}
+    {{ collections.all | eleventyNavigation | eleventyNavigationToHtml({
+      activeListItemClass: "active",
+      activeAnchorClass: "activeLink",
+      activeKey: eleventyNavigation.key
+    }) | safe }}
   </nav>
 </aside>

@@ -30,6 +30,13 @@ header {
 header a {
   text-decoration: none;
   color: #fff;
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+header .logo {
+  height: 2rem;
 }
 
 aside {
@@ -54,6 +61,16 @@ aside nav ul ul {
 
 aside nav ul ul ul {
   font-size: 1rem;
+}
+
+aside nav li.active {
+  box-sizing: border-box;
+  border: .1rem solid hsl(39deg, 100%, 67%);
+  border-right: .5rem solid hsl(39deg, 100%, 67%);
+}
+
+aside nav a.activeLink {
+  background: hsl(39deg, 100%, 90%);
 }
 
 aside nav a {
