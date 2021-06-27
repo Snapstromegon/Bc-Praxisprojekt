@@ -1,6 +1,6 @@
 ---
 eleventyNavigation:
-  order: -1
+  order: -2
 ---
 
 ## Short Description

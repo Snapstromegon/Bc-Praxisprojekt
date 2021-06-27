@@ -1,3 +1,12 @@
+- name: Example
+  id: 00_example
+  difficulty:
+    from: 0
+    to: 0
+  preview_image: /assets/componer/img/logo.svg
+  description: |
+    This shows how to use different component frameworks with Componer.
+
 - name: Read Me
   id: 01_readme
   difficulty: 
