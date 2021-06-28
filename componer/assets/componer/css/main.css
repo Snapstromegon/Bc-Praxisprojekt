@@ -90,11 +90,11 @@ aside nav a:hover {
 
 main {
   grid-area: main;
-  max-width: 80rem;
+  max-width: 66rem;
   width: 100%;
   height: 100%;
   margin: auto;
-  padding: 2rem 0;
+  padding: 2rem 0 10rem 0;
   overflow: auto;
 }
 
@@ -110,6 +110,16 @@ main pre[class*="language-"],
 main ul,
 main button {
   margin: 1em 1rem 0.5em 1rem;
+  line-height: 1.5em;
+}
+
+main h1,
+main h2,
+main h3,
+main h4,
+main h5,
+main h6 {
+  margin-top: 2em;
 }
 
 main li {
@@ -121,6 +131,12 @@ main .card-grid {
   gap: 1rem;
   grid-template-columns: repeat(auto-fill, minmax(20rem, 1fr));
   margin: 1rem;
+}
+
+main .card-grid h1 ,
+main .card-grid p
+{
+  margin-top: 1rem;
 }
 
 main .card-grid > .card {
@@ -263,5 +279,6 @@ footer {
   grid-area: footer;
   background: #fff;
   border-right: 0.1rem solid #ddd;
+  border-top: 0.1rem solid #ddd;
   padding: 1rem 2rem;
 }
