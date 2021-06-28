@@ -1,0 +1,13 @@
+{
+  "name": "vue-sfc",
+  "version": "1.0.0",
+  "description": "",
+  "main": "vue.config.js",
+  "scripts": {
+    "build": "npx @vue/cli build --target lib --dest assets --name component component.vue"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {}
+}

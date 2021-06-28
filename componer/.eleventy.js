@@ -18,8 +18,8 @@ module.exports = (eleventyConfig) => {
 
   eleventyConfig.addPassthroughCopy("assets");
   eleventyConfig.addWatchTarget("./assets/");
-  eleventyConfig.addPassthroughCopy("src/**/assets/**");
   eleventyConfig.addWatchTarget("src/**/assets/**");
+  eleventyConfig.addPassthroughCopy("src/**/assets/**");
 
   return {
     dir: {

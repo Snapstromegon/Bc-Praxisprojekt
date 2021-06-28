@@ -1,0 +1,19 @@
+{% raw %}
+<script src="https://unpkg.com/vue"></script>
+<script src="./assets/component.umd.js"></script>
+
+<link rel="stylesheet" href="./assets/component.css">
+
+
+<div id="app">
+  <demo></demo>
+</div>
+
+<script>
+new Vue({
+  components: {
+    demo: component
+  }
+}).$mount('#app')
+</script>
+{% endraw %}
