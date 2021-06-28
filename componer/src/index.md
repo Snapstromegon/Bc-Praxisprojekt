@@ -6,7 +6,6 @@ eleventyNavigation:
   order: -2
 ---
 
-# Componer
 <section class="flex-v-center">
 <img id="head" src="assets/componer/img/Head.jpg">
 
