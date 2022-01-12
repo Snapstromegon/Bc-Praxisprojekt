@@ -29,12 +29,12 @@ Please fill the following statements using either a "X" or a comma seperated lis
 Always use the option from column 2-6 which matches you the best in context of the statement in column one.
 (For readability I suggest disabling auto line breaks if you have it enabled)
 
-| Statement                  |                |                           |                                            |                                     |                           |
-| :------------------------- | -------------- | ------------------------- | ------------------------------------------ | ----------------------------------- | ------------------------- |
-| My programming expertise   | () beginner    | () can do the basics      | () understand unknown code from reading it | () contributed to larger projects   | () Long term professional |
-| Frontend WebDev experience | () beginner    | () good HTML JS CSS       | () launched first project                  | () used bundlers/built tools before | () Spec author level      |
-| # Programming languages (name languages)   | () hello world | () compiles on my machine | () I use my software regularly             | () others use my software regularly | () Long term professional |
-| # Frontend Frameworks (name frameworks)     | () hello world | () played locally         | () used in personal project                | () used in bigger project           | () contributer level      |
+| Statement                                |                |                           |                                            |                                     |                           |
+| :--------------------------------------- | -------------- | ------------------------- | ------------------------------------------ | ----------------------------------- | ------------------------- |
+| My programming expertise                 | () beginner    | () can do the basics      | () understand unknown code from reading it | () contributed to larger projects   | () Long term professional |
+| Frontend WebDev experience               | () beginner    | () good HTML JS CSS       | () launched first project                  | () used bundlers/built tools before | () Spec author level      |
+| # Programming languages (name languages) | () hello world | () compiles on my machine | () I use my software regularly             | () others use my software regularly | () Long term professional |
+| # Frontend Frameworks (name frameworks)  | () hello world | () played locally         | () used in personal project                | () used in bigger project           | () contributer level      |
 
 ### How old are you?
 
